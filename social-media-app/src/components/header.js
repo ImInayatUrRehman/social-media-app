@@ -1,6 +1,6 @@
 const HeaderComponent = () => {
   return (
-    <div className="container text-bg-dark">
+    <div className="container text-bg-dark header">
       <header className="d-flex justify-content-center  py-2">
         <ul className="nav nav-pills">
           <li className="nav-item">

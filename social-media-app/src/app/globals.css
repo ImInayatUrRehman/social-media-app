@@ -17,8 +17,7 @@
 .main-side {
   width: 100%;
   margin-left: 12rem;
-
-  z-index: 1;
+  z-index: 20;
 }
 .post-list {
   margin: 2rem 10rem;
