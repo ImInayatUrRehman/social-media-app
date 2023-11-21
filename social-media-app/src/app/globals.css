@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Recommended to avoid unexpected layout issues */
+}
+.main-container {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+.side-bar {
+  position: fixed;
+  width: 10rem;
+  height: 100vh;
+  z-index: 100;
+}
+.main-side {
+  width: 100%;
+  margin-left: 12rem;
+
+  z-index: 1;
+}

@@ -1,6 +1,19 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import SideBar from "@/components/sidebar";
+import HeaderComponent from "@/components/header";
+import FooterComponent from "@/components/footer";
+import CreatePostComponent from "@/components/createpost";
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <main className="main-container">
+      <div className="side-bar">
+        <SideBar />
+      </div>
+      <div className="main-side">
+        <HeaderComponent />
+        <CreatePostComponent />
+        <FooterComponent />
+      </div>
+    </main>
+  );
 }
