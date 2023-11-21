@@ -3,7 +3,10 @@ import PostList from "./postlist";
 const PostComponent = () => {
   return (
     <div>
-      <h1>PostComponents</h1>
+      <PostList />
+      <PostList />
+      <PostList />
+      <PostList />
       <PostList />
     </div>
   );
