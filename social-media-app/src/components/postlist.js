@@ -1,4 +1,8 @@
+import { PostList } from "@/store/post-list-store";
+import { useContext } from "react";
+
 const PostListComponents = ({ post }) => {
+  const { deletePost } = useContext(PostList);
   return (
     <div className="post-list">
       <div className="modal-content rounded-4 p-4 shadow">
@@ -9,16 +13,21 @@ const PostListComponents = ({ post }) => {
             className="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
+            onClick={() => deletePost(post.id)}
           ></button>
         </div>
         <div className="modal-body py-0">{post.body}</div>
         <div className="p-2 ">
-          {post.tags.map((tag) => (
-            <span class="badge text-bg-primary m-1">{post.tags}</span>
+          {post.tags.map((tag, index) => (
+            <span key={index} className="badge bg m-1">
+              {tag}
+            </span>
           ))}
         </div>
         <div className="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-          <alert className="bg-primary p-2 rounded">Post Rection</alert>
+          <alert className="bg p-2 rounded">
+            This post has been reacted by {post.rections} pepole.
+          </alert>
         </div>
       </div>
     </div>

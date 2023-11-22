@@ -4,9 +4,20 @@ export const PostList = createContext({
   addPost: () => {},
   deletePost: () => {},
 });
-
+// const postListReducer = (currentPostList, action) => {
+//   if (action.type === "DELETE_POST") {
+//     return currentPostList.filter((post) => post.id !== action.payload.PostId);
+//   }
+//   return currentPostList;
+// };
 const postListReducer = (currentPostList, action) => {
-  return currentPostList;
+  let newPostList = currentPostList;
+  if (action.type === "DELETE_POST") {
+    newPostList = currentPostList.filter(
+      (post) => post.id !== action.payload.PostId
+    );
+  }
+  return newPostList;
 };
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(
@@ -14,7 +25,14 @@ const PostListProvider = ({ children }) => {
     DEFAULT_POST_LIST
   );
   const addPost = () => {};
-  const deletePost = () => {};
+  const deletePost = (PostId) => {
+    dispatchPostList({
+      type: "DELETE_POST",
+      payload: {
+        PostId,
+      },
+    });
+  };
   return (
     <PostList.Provider
       value={{
@@ -43,7 +61,7 @@ const DEFAULT_POST_LIST = [
     body: "Hi ma Sajid sa mill rha hu ......... ......",
     rections: "5",
     userId: "user-2",
-    tags: ["battagram", "btm", "going"],
+    tags: ["battagram", "going"],
   },
 ];
 export default PostListProvider;

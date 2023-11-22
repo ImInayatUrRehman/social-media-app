@@ -22,3 +22,7 @@
 .post-list {
   margin: 2rem 10rem;
 }
+.bg {
+  background-color: rgb(0, 0, 116);
+  color: white;
+}
