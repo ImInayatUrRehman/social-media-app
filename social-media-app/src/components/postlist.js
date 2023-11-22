@@ -25,9 +25,9 @@ const PostListComponents = ({ post }) => {
           ))}
         </div>
         <div className="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-          <alert className="bg p-2 rounded">
+          <span className="bg p-2 rounded">
             This post has been reacted by {post.rections} pepole.
-          </alert>
+          </span>
         </div>
       </div>
     </div>
