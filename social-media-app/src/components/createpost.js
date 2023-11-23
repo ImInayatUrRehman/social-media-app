@@ -37,6 +37,7 @@ const CreatePostComponent = () => {
           className="form-control m-1"
           id="userId"
           placeholder="Your UserId"
+          required
         />
         <label htmlFor="title" className="form-label">
           Post Title.
@@ -46,7 +47,8 @@ const CreatePostComponent = () => {
           ref={PostTitleElement}
           className="form-control m-1"
           id="title"
-          placeholder="How many pepole rected to this post"
+          placeholder="Enter Post Title"
+          required
         />
         <label htmlFor="body" className="form-label">
           Post Content.
@@ -58,6 +60,7 @@ const CreatePostComponent = () => {
           rows={"5"}
           id="body"
           placeholder="Tell Us more about it"
+          required
         />
         <label htmlFor="tags" className="form-label">
           Number of rections.
@@ -68,6 +71,7 @@ const CreatePostComponent = () => {
           className="form-control m-1"
           id="rections"
           placeholder="How many pepole rected to this post"
+          required
         />
         <label htmlFor="tags" className="form-label">
           Enter Your hastags here.
@@ -78,6 +82,7 @@ const CreatePostComponent = () => {
           className="form-control m-1"
           id="tags"
           placeholder="Please enter tags using space"
+          required
         />
       </div>
 

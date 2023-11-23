@@ -26,3 +26,11 @@
   background-color: rgb(0, 0, 116);
   color: white;
 }
+.spinner-border {
+  margin-top: 4rem;
+}
+.wc-msg {
+  text-align: center;
+
+  margin-top: 4rem;
+}

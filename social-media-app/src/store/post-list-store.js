@@ -2,6 +2,7 @@ const { createContext, useReducer } = require("react");
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
+  addInitialPosts: () => {},
   deletePost: () => {},
 });
 
@@ -11,16 +12,19 @@ const postListReducer = (currentPostList, action) => {
     newPostList = currentPostList.filter(
       (post) => post.id !== action.payload.PostId
     );
+  } else if (action.type === "ADD_INITIAL_POST") {
+    newPostList = action.payload.posts;
   } else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currentPostList];
   }
   return newPostList;
 };
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostList] = useReducer(
-    postListReducer,
-    DEFAULT_POST_LIST
-  );
+  // const [postList, dispatchPostList] = useReducer(
+  //   postListReducer,
+  //   DEFAULT_POST_LIST
+  // );
+  const [postList, dispatchPostList] = useReducer(postListReducer, []);
   const addPost = (userId, postTitle, postBody, rections, tags) => {
     dispatchPostList({
       type: "ADD_POST",
@@ -31,6 +35,14 @@ const PostListProvider = ({ children }) => {
         rections: rections,
         userId: userId,
         tags: tags,
+      },
+    });
+  };
+  const addInitialPosts = (posts) => {
+    dispatchPostList({
+      type: "ADD_INITIAL_POST",
+      payload: {
+        posts,
       },
     });
   };
@@ -47,6 +59,7 @@ const PostListProvider = ({ children }) => {
       value={{
         postList: postList,
         addPost: addPost,
+        addInitialPosts: addInitialPosts,
         deletePost: deletePost,
       }}
     >
@@ -55,22 +68,22 @@ const PostListProvider = ({ children }) => {
   );
 };
 
-const DEFAULT_POST_LIST = [
-  {
-    id: "1",
-    title: "Going To Battagram",
-    body: "Hi I ma Going To battagram ......... ......",
-    rections: "2",
-    userId: "user-4",
-    tags: ["battagram", "btm", "going"],
-  },
-  {
-    id: "2",
-    title: "Meet To Sajid",
-    body: "Hi ma Sajid sa mill rha hu ......... ......",
-    rections: "5",
-    userId: "user-2",
-    tags: ["battagram", "going"],
-  },
-];
+// const DEFAULT_POST_LIST = [
+//   {
+//     id: "1",
+//     title: "Going To Battagram",
+//     body: "Hi I ma Going To battagram ......... ......",
+//     rections: "2",
+//     userId: "user-4",
+//     tags: ["battagram", "btm", "going"],
+//   },
+//   {
+//     id: "2",
+//     title: "Meet To Sajid",
+//     body: "Hi ma Sajid sa mill rha hu ......... ......",
+//     rections: "5",
+//     userId: "user-2",
+//     tags: ["battagram", "going"],
+//   },
+// ];
 export default PostListProvider;
